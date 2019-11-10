@@ -7,7 +7,11 @@ import { RootState } from "../types";
 Vue.use(Vuex);
 
 // Check if user is known at startup
-let user = JSON.parse(localStorage.getItem("user") || "");
+let user = undefined;
+let strUser = localStorage.getItem("user");
+if (strUser) {
+  user = JSON.parse(strUser);
+}
 
 // export const store: StoreOptions<RootState> = {
 export default new Vuex.Store({
