@@ -15,14 +15,14 @@
           Welcome to Kbooks
         </h1>
         <div>
-          <!-- <select name="language" v&#45;model="$language.current"> -->
-          <!--   <option -->
-          <!--     v&#45;bind:key="key" -->
-          <!--     v&#45;for="(language, key) in $language.available" -->
-          <!--     :value="key" -->
-          <!--     >{{ language }}</option -->
-          <!--   > -->
-          <!-- </select> -->
+          <select name="language" v-model="$language.current">
+            <option
+              v-bind:key="key"
+              v-for="(language, key) in $language.available"
+              :value="key"
+              >{{ language }}</option
+            >
+          </select>
         </div>
         <h2>
           {{ message }}

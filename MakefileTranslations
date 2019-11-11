@@ -1,0 +1,38 @@
+NODE_BINDIR = ./node_modules/.bin
+export PATH := $(NODE_BINDIR):$(PATH)
+TEMPLATE_POT ?= ./template.pot
+LOCALES = en_US fr_FR
+LOCALE_FILES ?= $(patsubst %,./src/locale/%/LC_MESSAGES/app.po,$(LOCALES))
+GETTEXT_SOURCES ?= $(shell find ./src/ -name '*.jade' -o -name '*.html' -o -name '*.js' -o -name '*.vue' | grep -v gettextIni 2> /dev/null)
+
+clean:
+	rm -f $(TEMPLATE_POT) ./src/translations.json
+
+makemessages: $(TEMPLATE_POT)
+
+translations: ./src/translations.json
+
+# Create a main .pot template, then generate .po files for each available language.
+# Thanx to Systematic: https://github.com/Polyconseil/systematic/blob/866d5a/mk/main.mk#L167-L183
+$(TEMPLATE_POT): $(GETTEXT_SOURCES)
+# `dir` is a Makefile built-in expansion function which extracts the directory-part of `$@`.
+# `$@` is a Makefile automatic variable: the file name of the target of the rule.
+# => `mkdir -p /tmp/`
+	mkdir -p $(dir $@)
+# Extract gettext strings from templates files and create a POT dictionary template.
+	gettext-extract --quiet --attribute v-translate --output $@ $(GETTEXT_SOURCES)
+# Generate .po files for each available language.
+	@for lang in $(LOCALES); do \
+		export PO_FILE=./src/locale/$$lang/LC_MESSAGES/app.po; \
+		mkdir -p $$(dirname $$PO_FILE); \
+		if [ -f $$PO_FILE ]; then  \
+			echo "msgmerge --update $$PO_FILE $@"; \
+			msgmerge --lang=$$lang --update $$PO_FILE $@ || break ;\
+		else \
+			msginit --no-translator --locale=$$lang --input=$@ --output-file=$$PO_FILE || break ; \
+			msgattrib --no-wrap --no-obsolete -o $$PO_FILE $$PO_FILE || break; \
+		fi; \
+	done;
+
+./src/translations.json: $(LOCALE_FILES)
+	gettext-compile --output $@ $(LOCALE_FILES)

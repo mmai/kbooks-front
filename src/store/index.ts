@@ -29,9 +29,9 @@ export default new Vuex.Store({
       state.status = "success";
       state.user = payload.user;
       state.connected = true;
-      // if (state.user.language) {
-      //   Vue.config.language = state.user.language;
-      // }
+      if (state.user.language) {
+        Vue.config.language = state.user.language;
+      }
     },
     AUTH_ERROR(state) {
       state.status = "error";
