@@ -42,7 +42,9 @@ export default {
     message() {
       switch (this.action) {
         case "registerOk":
-          return "Your acount has been created, you can now log in with your username and password.";
+          return this.$gettext(
+            "Your acount has been created, you can now log in with your username and password."
+          );
         default:
           return "";
       }

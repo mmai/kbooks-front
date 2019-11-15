@@ -33,10 +33,11 @@ echo "\n\nConverting Typescript files"
 tsc ./src/main.ts
 
 echo "\n\nExtracting translations strings"
+make -f MakefileTranslations clean
 make -f MakefileTranslations makemessages
 
 echo "\n\nCleaning gettext input files"
 find ./src -name "*.js" | xargs rm
 find ./src -name "gettextIni-*.vue" | while read vuefile; do restoreIniVue "$vuefile"; done
 
-echo "\n\n>>> You can now edit po files then execute 'make -f MakefileTranslations translations'"
+echo "\n\n>>> You can now edit po files in src/locales/ then execute 'make -f MakefileTranslations translations'"

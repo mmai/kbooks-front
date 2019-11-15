@@ -1,15 +1,21 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: easygettext\n"
 "Project-Id-Version: \n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: easygettext\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/views/Home.vue:13
 msgid "Welcome to Kbooks"
 msgstr "Welcome to Kbooks"
+
+#: src/views/Home.vue:45
+msgid ""
+"Your acount has been created, you can now log in with your username and "
+"password."
+msgstr ""

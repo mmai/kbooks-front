@@ -8,3 +8,7 @@ msgstr ""
 #: ./src/views/Home.vue:13
 msgid "Welcome to Kbooks"
 msgstr ""
+
+#: ./src/views/Home.vue:45
+msgid "Your acount has been created, you can now log in with your username and password."
+msgstr ""
