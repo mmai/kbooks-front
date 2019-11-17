@@ -22,7 +22,7 @@
               v-model="username"
               label="Login"
               name="login"
-              prepend-icon="person"
+              prepend-icon="mdi-account"
               type="text"
               :error="loginShowError"
             ></v-text-field>
@@ -33,7 +33,7 @@
               id="password"
               label="Password"
               name="password"
-              prepend-icon="lock"
+              prepend-icon="mdi-lock"
               type="password"
               :error="loginShowError"
             ></v-text-field>

@@ -1,6 +1,6 @@
 <template>
   <v-btn color="red">
-    <v-icon>mdi-heart</v-icon>
+    <v-icon class="mdi mdi-heart"></v-icon>
     oo : {{ love }}
   </v-btn>
 </template>

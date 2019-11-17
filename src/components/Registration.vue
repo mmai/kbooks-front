@@ -28,7 +28,7 @@
           ></v-text-field>
           <v-text-field
             v-model="password"
-            :append-icon="showPassword ? 'visibility' : 'visibility_off'"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
             :rules="[rules.required]"
             :type="showPassword ? 'text' : 'password'"
             name="password1"
@@ -38,7 +38,7 @@
           ></v-text-field>
           <v-text-field
             v-model="passwordVerif"
-            :append-icon="showPasswordVerif ? 'visibility' : 'visibility_off'"
+            :append-icon="showPasswordVerif ? 'mdi-eye' : 'mdi-eye-off'"
             :rules="[rules.required, rules.passwordsMatch]"
             :type="showPasswordVerif ? 'text' : 'password'"
             label="Password verification"
